@@ -1,8 +1,13 @@
 package com.devbmendes.backend.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Person {
+public abstract class Person implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	
 	private Long id;
 	private String nif;
 	private String nome;
