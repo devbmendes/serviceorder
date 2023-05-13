@@ -8,12 +8,12 @@ public abstract class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
-	private Long id;
+	private Integer id;
 	private String nif;
 	private String nome;
 	private String telefone;
 
-	public Person(Long id, String nif, String nome, String telefone) {
+	public Person(Integer id, String nif, String nome, String telefone) {
 		super();
 		this.id = id;
 		this.nif = nif;
@@ -26,11 +26,11 @@ public abstract class Person implements Serializable {
 	}
 
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
