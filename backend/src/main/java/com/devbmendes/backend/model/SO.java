@@ -3,20 +3,42 @@ package com.devbmendes.backend.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
 public class SO {
-	private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mn")
 	private LocalDateTime openedDate;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mn")
 	private LocalDateTime closedDate;
 	private Integer priority;
 	private Integer status;
+	@ManyToOne
+	@JoinColumn(name = "id_technicien")
 	private Technicien technicien;
+	
+	@ManyToOne
+	@JoinColumn(name="id_client")
 	private Client client;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -75,7 +97,7 @@ public class SO {
 		this.setStatus(Status.OPEN);
 	}
 
-	public SO(Long id, LocalDateTime closedDate, Priority priority, Status status,
+	public SO(Integer id, LocalDateTime closedDate, Priority priority, Status status,
 			Technicien technicien, Client client) {
 		super();
 		this.id = id;

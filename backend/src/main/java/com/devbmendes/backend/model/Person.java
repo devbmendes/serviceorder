@@ -1,22 +1,22 @@
 package com.devbmendes.backend.model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Person implements Serializable {
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	private static final long serialVersionUID = 1L;
-	
-	
+public abstract class Person {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nif;
 	private String nome;
 	private String telefone;
 
-	public Person(Integer id, String nif, String nome, String telefone) {
+	public Person(Integer id, String nome, String telefone) {
 		super();
 		this.id = id;
-		this.nif = nif;
 		this.nome = nome;
 		this.telefone = telefone;
 	}
@@ -25,21 +25,12 @@ public abstract class Person implements Serializable {
 		super();
 	}
 
-
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getNif() {
-		return nif;
-	}
-
-	public void setNif(String nif) {
-		this.nif = nif;
 	}
 
 	public String getNome() {
@@ -60,7 +51,7 @@ public abstract class Person implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nif);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -72,7 +63,7 @@ public abstract class Person implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nif, other.nif);
+		return Objects.equals(id, other.id);
 	}
 
 }
