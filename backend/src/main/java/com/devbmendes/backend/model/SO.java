@@ -3,35 +3,28 @@ package com.devbmendes.backend.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
+@jakarta.persistence.Entity
 public class SO {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@jakarta.persistence.Id
+	@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mn")
 	private LocalDateTime openedDate;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mn")
 	private LocalDateTime closedDate;
 	private Integer priority;
 	private Integer status;
-	@ManyToOne
-	@JoinColumn(name = "id_technicien")
+	@jakarta.persistence.ManyToOne
+	@jakarta.persistence.JoinColumn(name = "id_technicien")
 	private Technicien technicien;
-	
-	@ManyToOne
-	@JoinColumn(name="id_client")
+
+	@jakarta.persistence.ManyToOne
+	@jakarta.persistence.JoinColumn(name = "id_client")
 	private Client client;
 
 	public Integer getId() {
@@ -97,14 +90,14 @@ public class SO {
 		this.setStatus(Status.OPEN);
 	}
 
-	public SO(Integer id, LocalDateTime closedDate, Priority priority, Status status,
-			Technicien technicien, Client client) {
+	public SO(Integer id, LocalDateTime closedDate, Priority priority, Status status, Technicien technicien,
+			Client client) {
 		super();
 		this.id = id;
 		this.setOpenedDate(LocalDateTime.now());
 		this.closedDate = closedDate;
-		this.priority = (priority == null)? 0: priority.getCod();
-		this.status = (status == null)? 0: status.getCod();
+		this.priority = (priority == null) ? 0 : priority.getCod();
+		this.status = (status == null) ? 0 : status.getCod();
 		this.technicien = technicien;
 		this.client = client;
 	}

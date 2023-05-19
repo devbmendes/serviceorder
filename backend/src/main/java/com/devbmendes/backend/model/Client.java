@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.OneToMany;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
-
+@Entity
 public class Client extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -14,6 +15,7 @@ public class Client extends Person implements Serializable {
 	public Client() {
 		super();
 	}
+
 	@OneToMany(mappedBy = "client")
 	private List<SO> list = new ArrayList<>();
 

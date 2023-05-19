@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.OneToMany;
 
 
+@jakarta.persistence.Entity
 public class Technicien extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -15,7 +15,7 @@ public class Technicien extends Person implements Serializable {
 		super();
 
 	}
-	@OneToMany(mappedBy = "technicien")
+	@jakarta.persistence.OneToMany(mappedBy = "technicien")
 	private List<SO> list = new ArrayList<>();
 
 	public Technicien(Integer id, String nif, String nome, String telefone) {
