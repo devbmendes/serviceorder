@@ -1,10 +1,10 @@
-package com.devbmendes.backend;
+package com.devb.sobackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendApplicationTests {
+class SobackendApplicationTests {
 
 	@Test
 	void contextLoads() {
