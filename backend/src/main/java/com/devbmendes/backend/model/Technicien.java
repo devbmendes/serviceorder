@@ -21,7 +21,7 @@ public class Technicien extends Person implements Serializable {
 	@OneToMany(mappedBy = "technicien")
 	private List<SO> list = new ArrayList<>();
 
-	public Technicien(Integer id, String nif, String nome, String telefone) {
+	public Technicien(Integer id,String nome, String telefone) {
 		super(id, nome, telefone);
 		// TODO Auto-generated constructor stub
 	}

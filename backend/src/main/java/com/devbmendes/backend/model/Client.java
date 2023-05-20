@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.devbmendes.backend.model.SO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -21,7 +20,7 @@ public class Client extends Person implements Serializable {
 	@OneToMany(mappedBy = "client")
 	private List<SO> list = new ArrayList<>();
 
-	public Client(Integer id, String nif, String nome, String telefone) {
+	public Client(Integer id,String nome, String telefone) {
 		super(id, nome, telefone);
 		// TODO Auto-generated constructor stub
 	}

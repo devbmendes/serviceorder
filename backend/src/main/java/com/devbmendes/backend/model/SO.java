@@ -17,10 +17,24 @@ public class SO {
 
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mn")
 	private LocalDateTime closedDate;
+	
 	private Integer priority;
+	
 	private Integer status;
+	
 	@jakarta.persistence.ManyToOne
 	@jakarta.persistence.JoinColumn(name = "id_technicien")
+	
+	private String obs;
+	
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+
 	private Technicien technicien;
 
 	@jakarta.persistence.ManyToOne
@@ -90,13 +104,13 @@ public class SO {
 		this.setStatus(Status.OPEN);
 	}
 
-	public SO(Integer id, LocalDateTime closedDate, Priority priority, Status status, Technicien technicien,
+	public SO(Integer id,Priority priority,String obs, Status status, Technicien technicien,
 			Client client) {
 		super();
 		this.id = id;
 		this.setOpenedDate(LocalDateTime.now());
-		this.closedDate = closedDate;
 		this.priority = (priority == null) ? 0 : priority.getCod();
+		this.obs = obs;
 		this.status = (status == null) ? 0 : status.getCod();
 		this.technicien = technicien;
 		this.client = client;
